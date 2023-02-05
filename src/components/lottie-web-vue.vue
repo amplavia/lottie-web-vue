@@ -14,6 +14,7 @@ const props = defineProps({
   loop: { type: [Number, Boolean], default: false },
   autoPlay: { type: Boolean, default: true },
   speed: { type: Number, default: 1 },
+  viewBoxSize: { type: [String], default: null },
 });
 
 const emit = defineEmits<{
@@ -38,6 +39,9 @@ function init(container: Element) {
     renderer: "svg",
     loop: props.loop,
     autoplay: props.autoPlay,
+    rendererSettings: {
+      viewBoxSize: props.viewBoxSize,
+    },
     animationData: JSON.parse(JSON.stringify(props.animationData)),
   });
 
