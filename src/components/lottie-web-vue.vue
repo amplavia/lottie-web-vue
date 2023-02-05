@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import Lottie, {
   type AnimationDirection,
-  type AnimationItem,
+  type AnimationItem
 } from "lottie-web";
 
 const animation = ref<Element>();
@@ -14,7 +14,7 @@ const props = defineProps({
   loop: { type: [Number, Boolean], default: false },
   autoPlay: { type: Boolean, default: true },
   speed: { type: Number, default: 1 },
-  viewBoxSize: { type: [String], default: null },
+  viewBoxSize: { type: [String], default: null }
 });
 
 const emit = defineEmits<{
@@ -46,6 +46,12 @@ function init(container: Element) {
   });
 
   anim.value.setSpeed(props.speed);
+
+  try {
+    anim.value?.renderer?.svgElement.getElementsByTagName("defs")[0].remove();
+  } catch (e) {
+    //only remove defs if it exists
+  }
 
   anim.value.addEventListener("loopComplete", () => {
     emit("loopComplete");
@@ -114,7 +120,7 @@ defineExpose({
   getDuration,
   goToAndStop,
   goToAndPlay,
-  destroy,
+  destroy
 });
 </script>
 
