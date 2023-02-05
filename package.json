@@ -1,5 +1,5 @@
 {
-  "name": "lottie-web-vue",
+  "name": "@amplavia/lottie-web-vue",
   "version": "1.0.0",
   "description": "Airbnb Lottie-web component for Vue.js projects",
   "type": "module",
